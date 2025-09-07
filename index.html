@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Weather Search</title>
+</head>
+<body class="dark">
+    <div class="box dark-box">
+        <h1>Search for a city</h1>
+        <div class="search">
+            <input type="text">
+            <button id="search" class="btn">Search</button>
+        </div>
+        <div class="result">
+            <h3>
+                <span id="text">Weather:</span>
+                <span id="number">0</span>
+                &deg;
+                <button id="toggle" class="btn">F</button>
+            </h3>
+        </div>
+    </div>
+    <button id="theme"><i class="fa-solid fa-moon"></i></button>
+
+    <script src="script.js"></script>
+</body>
+</html>
