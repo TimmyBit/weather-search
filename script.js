@@ -7,6 +7,7 @@ const degNum = document.querySelector('#number');
 const input = document.querySelector('input');
 const search = document.querySelector('#search');
 const text = document.querySelector('#text');
+let currentTemp = null;
 
 // Functions
 // Theme toggle
@@ -42,27 +43,35 @@ const getWeather = () => {
     fetch(api)
         .then((res) => res.json())
         .then((data) => {
-            degNum.textContent = Math.round(data.main.temp);
+            currentTemp = data.main.temp;
+
+            if (toggle.textContent === 'F') {
+                degNum.textContent = Math.round(currentTemp);
+            } else {
+                degNum.textContent = Math.round(((currentTemp - 32) * 5) / 9);
+            }
+
             text.textContent = `Weather in ${city}:`;
+            input.value = '';
+            input.focus();
         })
-        .catch((err) => console.log('Error', err));
+        .catch((err) => {
+            text.textContent = 'City not found';
+            degNum.textContent = '';
+            console.log('Error', err);
+        });
 };
 
 // Degree toggle
 const toggleDeg = () => {
-    let celsius = Math.round(
-        ((Number.parseInt(degNum.textContent) - 32) * 5) / 9
-    );
-    let fahrenheit = Math.round(
-        (Number.parseInt(degNum.textContent) * 9) / 5 + 32
-    );
+    if (!currentTemp) return;
 
     if (toggle.textContent === 'F') {
         toggle.textContent = 'C';
-        degNum.textContent = celsius;
+        degNum.textContent = Math.round(((currentTemp - 32) * 5) / 9);
     } else {
         toggle.textContent = 'F';
-        degNum.textContent = fahrenheit;
+        degNum.textContent = Math.round(currentTemp);
     }
 };
 
