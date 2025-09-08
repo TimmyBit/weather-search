@@ -4,6 +4,9 @@ const box = document.querySelector('.box');
 const icon = document.querySelector('i');
 const toggle = document.querySelector('#toggle');
 const degNum = document.querySelector('#number');
+const input = document.querySelector('input');
+const search = document.querySelector('#search');
+const text = document.querySelector('#text');
 
 // Functions
 // Theme toggle
@@ -29,6 +32,22 @@ const themeTog = () => {
     }
 };
 
+// Fetch
+const getWeather = () => {
+    const city = input.value.trim();
+    if (!city) return;
+
+    const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a37372ecb5d7c9213540896cc2a65647&units=imperial`;
+
+    fetch(api)
+        .then((res) => res.json())
+        .then((data) => {
+            degNum.textContent = Math.round(data.main.temp);
+            text.textContent = `Weather in ${city}:`;
+        })
+        .catch((err) => console.log('Error', err));
+};
+
 // Degree toggle
 const toggleDeg = () => {
     let celsius = Math.round(
@@ -50,3 +69,4 @@ const toggleDeg = () => {
 // Event Listeners
 themeBtn.addEventListener('click', themeTog);
 toggle.addEventListener('click', toggleDeg);
+search.addEventListener('click', getWeather);
