@@ -113,3 +113,28 @@ input {
     background: #004ba1;
     cursor: pointer;
 }
+
+@media (max-width: 650px) {
+    .box {
+        width: 95%;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .search {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .result {
+        width: 90%;
+    }
+
+    #search {
+        width: 40%;
+    }
+}
