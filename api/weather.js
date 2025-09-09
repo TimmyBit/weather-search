@@ -1,6 +1,16 @@
 export default async function handler(req, res) {
-    const city = req.query.city; // comes from frontend
-    const apiKey = process.env.OWM_KEY; // stored securely
+    const city = req.query.city;
+    const apiKey = process.env.OWM_KEY;
+
+    // Allow requests from anywhere (for testing) or replace * with your frontend URL
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    if (req.method === 'OPTIONS') {
+        res.status(200).end();
+        return;
+    }
 
     try {
         const response = await fetch(
