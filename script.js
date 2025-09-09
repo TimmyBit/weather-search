@@ -39,7 +39,8 @@ const getWeather = () => {
     if (!city) return;
 
     fetch(
-        `https://weather-search-hgslbdimv-igor-timushkovs-projects.vercel.app/api/weather?city=${city}`
+        'https://weather-search-hgslbdimv-igor-timushkovs-projects.vercel.app/api/weather?city=' +
+            city
     )
         .then((res) => res.json())
         .then((data) => {
