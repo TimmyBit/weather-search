@@ -38,17 +38,17 @@ const getWeather = () => {
     const city = input.value.trim();
     if (!city) return;
 
-    const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=&units=imperial`;
-
-    fetch(api)
+    fetch(
+        `https://weather-search-hgslbdimv-igor-timushkovs-projects.vercel.app/api/weather?city=${city}`
+    )
         .then((res) => res.json())
         .then((data) => {
             currentTemp = data.main.temp;
 
             if (toggle.textContent === 'F') {
-                degNum.textContent = Math.round(currentTemp);
+                degNum.textContent = Math.round((currentTemp * 9) / 5 + 32);
             } else {
-                degNum.textContent = Math.round(((currentTemp - 32) * 5) / 9);
+                degNum.textContent = Math.round(currentTemp);
             }
 
             text.textContent = `Weather in ${city}:`;
@@ -59,6 +59,7 @@ const getWeather = () => {
             text.textContent = 'City not found';
             degNum.textContent = '';
             console.log('Error', err);
+            currentTemp = null;
         });
 };
 
@@ -66,11 +67,11 @@ const getWeather = () => {
 const toggleDeg = () => {
     if (!currentTemp) return;
 
-    if (toggle.textContent === 'F') {
-        toggle.textContent = 'C';
-        degNum.textContent = Math.round(((currentTemp - 32) * 5) / 9);
-    } else {
+    if (toggle.textContent === 'C') {
         toggle.textContent = 'F';
+        degNum.textContent = Math.round((currentTemp * 9) / 5 + 32);
+    } else {
+        toggle.textContent = 'C';
         degNum.textContent = Math.round(currentTemp);
     }
 };
@@ -79,3 +80,6 @@ const toggleDeg = () => {
 themeBtn.addEventListener('click', themeTog);
 toggle.addEventListener('click', toggleDeg);
 search.addEventListener('click', getWeather);
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') getWeather();
+});
