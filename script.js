@@ -41,6 +41,9 @@ const getWeather = () => {
     fetch('/api/weather?city=' + city)
         .then((res) => res.json())
         .then((data) => {
+            if (!data.main) {
+                throw new Error('City not found');
+            }
             currentTemp = data.main.temp;
 
             if (toggle.textContent === 'F') {
