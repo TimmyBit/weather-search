@@ -38,7 +38,7 @@ const getWeather = () => {
     const city = input.value.trim();
     if (!city) return;
 
-    const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a37372ecb5d7c9213540896cc2a65647&units=imperial`;
+    const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=&units=imperial`;
 
     fetch(api)
         .then((res) => res.json())
