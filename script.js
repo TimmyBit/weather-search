@@ -54,7 +54,6 @@ const getWeather = () => {
 
             text.textContent = `Weather in ${city}:`;
             input.value = '';
-            input.focus();
         })
         .catch((err) => {
             text.textContent = 'City not found';
