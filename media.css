@@ -108,6 +108,7 @@
         justify-content: center;
         width: 95%;
         grid-template-columns: 31.8% 31.8% 31.8%;
+        padding-bottom: 10px;
     }
 
     .detail {
