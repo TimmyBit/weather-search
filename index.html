@@ -4,26 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="utility.css">
+    <link rel="stylesheet" href="media.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
         integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Weather Search</title>
 </head>
 <body class="dark">
-    <div class="box dark-box">
-        <h1>Search for a city</h1>
-        <div class="search">
-            <input type="text">
-            <button id="search" class="btn">Search</button>
+<!-- Search -->
+    <header>
+        <div class="box dark-box">
+            <h1>Search for a city</h1>
+        
+            <div class="search">
+                <input type="text">
+                <button id="search" class="btn">Search</button>
+            </div>
         </div>
-        <div class="result">
-            <h3>
-                <span id="text">Weather:</span>
-                <span id="number"></span>&deg;<button id="toggle" class="btn">F</button>
-            </h3>
+
+        <div id="city-name"></div>
+
+        <div id="buttons">
+            <button id="toggle" class="big-btn">F</button>
+            <button id="theme" class="big-btn"><i class="fa-solid fa-moon"></i></button>
+        </div>
+    </header>
+    
+    <!-- Weather Details -->
+    <div id="weather-details">
+        <div id="temp" class="detail dark-box">
+            <h3>Temperature</h3>
+            <h2 id="temp-value">
+                <img id="weather-icon" class="dark-img" src="" alt="i">
+                <span id="number"></span>&deg;
+            </h2>
+        </div>
+
+        <div id="temp-min" class="detail dark-box">
+            <h3>Min Temp</h3>
+            <h2>
+                <span id="min-value"></span>&deg;
+            </h2>
+        </div>
+
+        <div id="temp-max" class="detail dark-box">
+            <h3>Max Temp</h3>
+            <h2>
+                <span id="max-value"></span>&deg;
+            </h2>
+        </div>
+
+        <div id="feels-like" class="detail dark-box">
+            <h3>Feels Like</h3>
+            <h2>
+                <span id="feels-value"></span>&deg;
+            </h2>
+        </div>
+
+        <div id="description" class="detail dark-box">
+            <h3>Description</h3>
+            <h4 id="description-value"></h4>
+        </div>
+
+        <div id="wind" class="detail dark-box">
+            <h3>Wind</h3>
+            <h2 id="wind-value"></h2>
+        </div>
+
+        <div id="time" class="detail dark-box">
+            <h3>Time</h3>
+            <h2 id="time-value"></h2>
+        </div>
+
+        <div id="sunrise" class="detail dark-box">
+            <h3>Sunrise</h3>
+            <h2 id="sunrise-value"></h2>
+        </div>
+
+        <div id="sunset" class="detail dark-box">
+            <h3>Sunset</h3>
+            <h2 id="sunset-value"></h2>
         </div>
     </div>
-    <button id="theme"><i class="fa-solid fa-moon"></i></button>
 
     <script src="script.js"></script>
 </body>

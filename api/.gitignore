@@ -1,3 +1,5 @@
 .env
 
 API_KEY=ea1451d43e583c24a6460308b9664f97
+
+backend fetch = '/api/weather?city=' + city
